@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "juegosfera": {
+      "hosting": {
+        "juegosfera": [
+          "juegosfera"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "juegosfera"
+  }
+}
