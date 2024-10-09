@@ -6,9 +6,16 @@
           "juegosfera"
         ]
       }
+    },
+    "proyecto-8fc22": {
+      "hosting": {
+        "juegosfera": [
+          "proyecto-8fc22"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "juegosfera"
+    "default": "proyecto-8fc22"
   }
 }

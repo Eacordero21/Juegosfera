@@ -3,3 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #171A21; /* Cambia el color de fondo */
+    
+  }
+

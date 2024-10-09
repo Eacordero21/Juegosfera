@@ -25,7 +25,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     }),
     provideFirebaseApp(() => initializeApp({"projectId":"juegosfera","appId":"1:829566684421:web:4477728900bfbdd0abfb6c","storageBucket":"juegosfera.appspot.com","apiKey":"AIzaSyANveHa_r7EPDYL2CV4WVCUMVy-Ejam7ks","authDomain":"juegosfera.firebaseapp.com","messagingSenderId":"829566684421","measurementId":"G-WSQTH2CSF0"})),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideFirebaseApp(() => initializeApp({"projectId":"proyecto-8fc22","appId":"1:697344517093:web:60c9f9ebc78f611f59c50c","databaseURL":"https://proyecto-8fc22-default-rtdb.firebaseio.com","storageBucket":"proyecto-8fc22.appspot.com","apiKey":"AIzaSyCXPCxXabKkO2YVuKYP4v4tReTqBdx77QE","authDomain":"proyecto-8fc22.firebaseapp.com","messagingSenderId":"697344517093","measurementId":"G-FZKGGYNTS3"}))
   ],
   providers: [],
   bootstrap: [AppComponent]

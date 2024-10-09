@@ -1,59 +1,174 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Juegosfera</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <nav class="bg-gray-800 p-4">
-    <div class="flex justify-between items-center">
-      <a href="#" class="text-white text-xl font-bold">Mi Sitio</a>
-      <div>
-        <a href="#" class="text-gray-300 hover:text-white mx-2">Inicio</a>
-        <a href="#" class="text-gray-300 hover:text-white mx-2">Servicios</a>
-        <a href="#" class="text-gray-300 hover:text-white mx-2">Contacto</a>
-      </div>
-    </div>
-  </nav>
-  
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Click Me
-  </button>  
-  <div>
-    <div class="max-w-sm rounded overflow-hidden shadow-lg p-6 bg-white">
-      <img class="w-full" src="https://via.placeholder.com/400x200" alt="Imagen">
-      <div class="px-6 py-4">
-        <h1 class="font-bold text-xl mb-2">Título de la Tarjeta</h1>
-        <p class="text-gray-700 text-base">
-          Este es un texto de ejemplo para mostrar cómo puedes crear una tarjeta con Tailwind CSS.
-        </p>
-      </div>
-      <div class="bg-cover bg-center h-64 flex items-center justify-center" style="background-image: url('https://via.placeholder.com/800x400');">
-        <h1 class="text-4xl font-bold text-white">Bienvenido a Mi Sitio Web</h1>
-      </div>
-      <form class="max-w-lg mx-auto p-4 bg-gray-100 rounded-lg shadow-md">
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nombre</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Tu nombre">
+<body class="body">
+    <nav class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Correo</label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Tu correo">
+        <div id="mobile-menu" class="md:hidden">
+            <div class="flex flex-col space-y-2 p-4 bg-gray-700">
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+            </div>
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Mensaje</label>
-          <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="4" placeholder="Escribe tu mensaje"></textarea>
-        </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Enviar</button>
-      </form>
-            
-    </div>
-    
+    </nav>
+
+    <div class="container mx-auto mt-8">
+      <div class="relative">
+          <!-- Carousel -->
+          <div class="overflow-hidden rounded-lg">
+              <div id="carousel" class="flex transition-transform duration-500">
+                  <div class="min-w-full">
+                      <img src="https://elcomercio.pe/resizer/Ku-Myy9Dm703g6NLa6s4aUTBWO0=/1200x675/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/WAN6BCINKJDAFBSMAYIULYI6LA.jpg" alt="Imagen 1" class="w-full">
+                  </div>
+                  <div class="min-w-full">
+                      <img src="https://play-reactor.com/wp-content/uploads/2018/01/red-dead.jpg" alt="Imagen 2" class="w-full">
+                  </div>
+                  <div class="min-w-full">
+                      <img src="https://elcomercio.pe/resizer/Ku-Myy9Dm703g6NLa6s4aUTBWO0=/1200x675/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/WAN6BCINKJDAFBSMAYIULYI6LA.jpg" alt="Imagen 3" class="w-full">
+                  </div>
+              </div>
+          </div>
+          <!-- Botones de navegación -->
+          <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-lg">‹</button>
+          <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-lg">›</button>
+      </div>
   </div>
+
+  <div class="container mx-auto mt-8">
+    <div class="relative">
+        <!-- Carousel -->
+        <div class="overflow-hidden rounded-lg">
+            <div id="thumbnail-carousel" class="flex transition-transform duration-500">
+                <div class="min-w-full">
+                    <img src="https://via.placeholder.com/800x400?text=Imagen+4" alt="Imagen 4" class="w-full">
+                </div>
+                <div class="min-w-full">
+                    <img src="https://via.placeholder.com/800x400?text=Imagen+5" alt="Imagen 5" class="w-full">
+                </div>
+                <div class="min-w-full">
+                    <img src="https://via.placeholder.com/800x400?text=Imagen+6" alt="Imagen 6" class="w-full">
+                </div>
+            </div>
+        </div>
+        <!-- Botones de navegación -->
+        <button id="prev-thumbnail" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-lg">‹</button>
+        <button id="next-thumbnail" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-lg">›</button>
+    </div>
+    <!-- Miniaturas -->
+    <div class="flex justify-center space-x-2 mt-4">
+        <img src="https://via.placeholder.com/100x50?text=Img4" alt="Thumbnail 4" class="cursor-pointer thumbnail" data-index="0">
+        <img src="https://via.placeholder.com/100x50?text=Img5" alt="Thumbnail 5" class="cursor-pointer thumbnail" data-index="1">
+        <img src="https://via.placeholder.com/100x50?text=Img6" alt="Thumbnail 6" class="cursor-pointer thumbnail" data-index="2">
+    </div>
+</div>
+
+
+<footer class="bg-gray-800 text-white py-6 mt-8">
+  <div class="container mx-auto">
+      <p class="text-gray-400">Contacto: info@juegosfera.com</p>
+      <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+
+
+  
+
+    <script>
+        // Script para mostrar/ocultar el menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const nextButton = document.getElementById('next');
+  const prevButton = document.getElementById('prev');
+
+  let currentIndex = 0;
+  const totalSlides = carousel.children.length;
+
+  function updateCarousel() {
+      const offset = -currentIndex * 100; // Cambia el offset según el índice actual
+      carousel.style.transform = `translateX(${offset}%)`;
+      
+  }
+
+  nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides; // Sumar y ciclar
+      updateCarousel();
+  });
+
+  prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; // Restar y ciclar
+      updateCarousel();
+  });
+</script>
+
+<script>
+  // Carrousel con miniaturas
+  const thumbnailCarousel = document.getElementById('thumbnail-carousel');
+  const nextThumbnailButton = document.getElementById('next-thumbnail');
+  const prevThumbnailButton = document.getElementById('prev-thumbnail');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+  let currentThumbnailIndex = 0;
+  const totalThumbnailSlides = thumbnailCarousel.children.length;
+
+  function updateThumbnailCarousel() {
+      const offset = -currentThumbnailIndex * 100;
+      thumbnailCarousel.style.transform = `translateX(${offset}%)`;
+  }
+
+  nextThumbnailButton.addEventListener('click', () => {
+      currentThumbnailIndex = (currentThumbnailIndex + 1) % totalThumbnailSlides; // Ciclo hacia adelante
+      updateThumbnailCarousel();
+  });
+
+  prevThumbnailButton.addEventListener('click', () => {
+      currentThumbnailIndex = (currentThumbnailIndex - 1 + totalThumbnailSlides) % totalThumbnailSlides; // Ciclo hacia atrás
+      updateThumbnailCarousel();
+  });
+
+  // Click en miniaturas
+  thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+          currentThumbnailIndex = parseInt(thumbnail.getAttribute('data-index'));
+          updateThumbnailCarousel();
+      });
+  });
+</script>
+
 </body>
 </html>
