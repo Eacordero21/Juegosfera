@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="body">
+        <nav class="bg-gray-800 p-4 shadow-lg">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                    <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden">
+                <div class="flex flex-col space-y-2 p-4 bg-gray-700">
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                    <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Formulario de Registro -->
+        <div class="bg-gray-800 p-12 rounded-lg shadow-lg w-full max-w-lg hidden" id="register-form">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-white">Registrarse</h2>
+                <div>
+                    <span class="text-sm text-gray-400">¿Ya tienes cuenta?</span>
+                    <a href="#" onclick="toggleForms()" class="text-sm text-blue-500 hover:underline ml-1">Inicia Sesión</a>
+                </div>
+            </div>
+            <form class="space-y-6">
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-300">Correo Electrónico</label>
+                    <input
+                    type="email"
+                    id="register-email"
+                    placeholder="ejemplo@correo.com"
+                    class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required/>
+                </div>
+                <div>
+                    <label for="register-username" class="block text-sm font-medium text-gray-300">Nombre de Usuario</label>
+                    <input
+                    type="text"
+                    id="register-username"
+                    placeholder="Nombre de usuario"
+                    class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required/>
+                </div>
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-300">Contraseña</label>
+                    <input
+                    type="password"
+                    id="register-password"
+                    placeholder="********"
+                    class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required/>
+                </div>
+                <div>
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-300">Confirmar Contraseña</label>
+                    <input
+                    type="password"
+                    id="confirm-password"
+                    placeholder="********"
+                    class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    required/>
+                </div>
+                <button
+                    type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Registrarse
+                </button>
+            </form>
+
+            <div class="my-6 flex items-center justify-between">
+            <span class="border-b border-gray-600 w-1/5 lg:w-1/4"></span>
+            <span class="text-sm text-gray-400">O</span>
+            <span class="border-b border-gray-600 w-1/5 lg:w-1/4"></span>
+            </div>
+
+            <button
+            class="w-full bg-white text-gray-800 font-bold py-3 rounded-md shadow-md hover:bg-gray-100 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+            <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google logo" class="mr-2"/>
+            Registrarse con Google
+            </button>
+        </div>
+
+    <script>
+    function toggleForms() {
+        document.getElementById('login-form').classList.toggle('hidden');
+        document.getElementById('register-form').classList.toggle('hidden');
+    }
+    </script>
+
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto">
+            <p class="text-gray-400">Contacto: infojuegosfera.com</p>
+            <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
