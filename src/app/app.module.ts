@@ -12,9 +12,11 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { MainComponent } from './main/main.component';
 import { DataService } from './services/data.service';  // Ensure correct path to DataService
 import { environment } from '../environments/environment';
+import { RegistroComponent } from './registro/registro.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

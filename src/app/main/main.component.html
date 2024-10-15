@@ -18,7 +18,7 @@
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
             </div>
             <div class="hidden md:block">
-                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
@@ -40,7 +40,7 @@
     </nav>
     
     <!-- main.component.html -->
-<div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg">
+<div class="relative w-full  mx-auto overflow-hidden rounded-lg shadow-lg">
     <!-- Contenedor de los slides con la lógica de desplazamiento -->
     <div class="flex transition-transform duration-500" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
       <div class="flex-shrink-0 w-full">
@@ -63,13 +63,19 @@
     </button>
   
     <!-- Indicadores del carrusel -->
-    <div class="absolute bottom-0 left-0 right-0 flex justify-center p-2 space-x-2 bg-black bg-opacity-50">
+    <div class="absolute bottom-0 left-0 right-0 flex justify-center p-2 space-x-2 ">
       <span *ngFor="let slide of slides; let i = index" 
             (click)="goToSlide(i)"
             class="w-3 h-3 bg-white rounded-full cursor-pointer"
             [class.bg-gray-400]="currentSlide !== i"></span>
     </div>
   </div>
+
+  <div class="mt-8">
+    <a href="" class="text-white text-4xl font-bold ml-16 p-4 pt-6">Ofertas Especiales</a>
+  </div>
+
+  
   
   <!-- Lógica del carrusel en línea -->
   <script type="text/javascript">
@@ -106,11 +112,6 @@
   </div>
 </footer>
 
-
-
-  
-
-   
 
 </body>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="body">
+    <nav class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+            </div>
+            <div class="hidden md:block">
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden">
+            <div class="flex flex-col space-y-2 p-4 bg-gray-700">
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex items-center justify-center min-h-screen bg-gray-900">
+        <!-- Formulario de Iniciar Sesión -->
+        <div class="bg-gray-800 p-12 rounded-lg shadow-lg w-full max-w-lg" id="login-form">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-white">Iniciar Sesión</h2>
+            <div>
+              <span class="text-sm text-gray-400">¿Aún no tienes cuenta?</span>
+              <a href="/registro" onclick="toggleForms()" class="text-sm text-blue-500 hover:underline ml-1">Regístrate</a>
+            </div>
+          </div>
+          <form class="space-y-6">
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-300">Usuario o Correo</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="ejemplo@correo.com"
+                class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                required
+              />
+            </div>
+            <div>
+              <label for="password" class="block text-sm font-medium text-gray-300">Contraseña</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="********"
+                class="mt-1 block w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Iniciar Sesión
+            </button>
+          </form>
+      
+          <div class="my-6 flex items-center justify-between">
+            <span class="border-b border-gray-600 w-1/5 lg:w-1/4"></span>
+            <span class="text-sm text-gray-400">O</span>
+            <span class="border-b border-gray-600 w-1/5 lg:w-1/4"></span>
+          </div>
+          <button
+            class="w-full bg-white text-gray-800 font-bold py-3 rounded-md shadow-md hover:bg-gray-100 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          >
+            <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google logo" class="mr-2"/>
+            Iniciar sesión con Google
+        </button>
+        </div>
+      
+        
+    </div>
+      
+
+    <footer class="bg-gray-800 text-white py-6 mt-8">
+        <div class="container mx-auto">
+            <p class="text-gray-400">Contacto: infojuegosfera.com</p>
+            <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>
