@@ -9,28 +9,29 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-
+import { MainComponent } from './main/main.component';
+import { DataService } from './services/data.service';  // Ensure correct path to DataService
 import { environment } from '../environments/environment';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    // Correct Firebase initialization using the modular SDK
+    // Firebase initialization using the modular SDK
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()), 
-    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),  // Provide Firebase Authentication
+    provideFirestore(() => getFirestore()),  // Provide Firestore
     // Registering Service Worker for PWA capabilities
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
