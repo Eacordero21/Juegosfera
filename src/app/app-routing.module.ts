@@ -7,11 +7,12 @@ import { RegistroComponent } from './registro/registro.component';  // Importa e
 
 
 const routes: Routes = [
-  { path: '', component: MainComponent }, // Configura la ruta para la tienda
+  { path: '', component: MainComponent, pathMatch: 'full' }, // Configura la ruta para la tienda
   { path: 'main', component: MainComponent }, // Configura la ruta para el inicio
   { path: 'tienda', component: TiendaComponent }, // Configura la ruta para la tienda
   { path: 'login', component: LoginComponent }, // Configura la ruta para el login
   { path: 'registro', component: RegistroComponent }, // Configura la ruta para la tienda
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
