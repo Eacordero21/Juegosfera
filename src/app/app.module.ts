@@ -2,6 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,13 +15,16 @@ import { DataService } from './services/data.service';  // Ensure correct path t
 import { environment } from '../environments/environment';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { TiendaComponent } from './tienda/tienda.component'; // Importa TiendaComponent
+
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     // Firebase initialization using the modular SDK
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),  // Provide Firebase Authentication

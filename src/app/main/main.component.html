@@ -49,28 +49,31 @@
 
   <!-- Contenedor para el botón y el ícono sobre la imagen, alineado a la parte inferior derecha -->
   <div class="absolute bottom-0 right-0 mb-4 mr-4 flex items-center space-x-4">
-      <!-- Ícono de corazón para lista de deseos -->
-      <button class="p-2 focus:outline-none">
-        <svg class="w-10 h-10 text-blue-500 fill-current hover:text-blue-700 transition duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.42 3.42 5 5.5 5c1.74 0 3.41.81 4.5 2.09C11.09 5.81 12.76 5 14.5 5 16.58 5 18 6.42 18 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-    </button>
+      <!-- Botón con SVG de archivo externo -->
+        <button class="p-2 focus:outline-none">
+            <img src="/assets/corazon sin cuadro.png" class="w-15 h-10 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
+        </button>
+
       <!-- Botón para agregar al carrito -->
-      <button class="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center hover:bg-blue-600 transition duration-300 shadow-md">
-        <!-- Ícono de carrito -->
-        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M7 4h14l-1.35 6.3a2 2 0 01-1.98 1.7H8.5a2 2 0 01-1.96-1.45l-1.5-7A2 2 0 012 3H1" />
-            <path d="M16 21a2 2 0 100-4 2 2 0 000 4zM8 21a2 2 0 100-4 2 2 0 000 4z" />
-        </svg>
-        Agregar al Carrito
-    </button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center gap-4 hover:bg-blue-600 transition duration-300 shadow-md">
+            <!-- Ícono de carrito -->
+            <img src="/assets/shopping-cart_icon-icons.com_65051.png" class="w-5 h-5 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
+            Agregar al Carrito
+        </button>
+
   </div>
 </div>
+
+<div class="mt-8 mb-6 ml-16">
+    <a href="" class="text-white text-4xl font-bold p-4 pt-6">Destacados</a>
+    <div class="border-b border-gray-700 w-3/3 mt-8"></div>
+  </div>
+  
 
 
     
     <!-- main.component.html -->
-<div class="relative w-full max-w-7xl mx-auto overflow-hidden rounded-lg shadow-lg">
+<div class="relative w-full max-w-7xl mx-auto overflow-hidden rounded-lg shadow-lg mt-12">
   <!-- Contenedor de los slides con la lógica de desplazamiento -->
   <div class="flex transition-transform duration-500" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
       <div class="flex-shrink-0 w-full">
@@ -80,7 +83,7 @@
           <img src="https://wallpapers.com/images/featured/1280-x-720-juegos-dy2yl9hawgkkzxgd.jpg" class="w-full h-90 object-cover" alt="Slide 2">
       </div>
       <div class="flex-shrink-0 w-full">
-          <img src="https://via.placeholder.com/900x300/dc3545/ffffff?text=Slide+3" class="w-full h-90 object-cover" alt="Slide 3">
+          <img src="https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg" class="w-full h-90 object-cover" alt="Slide 3">
       </div>
   </div>
 
@@ -104,6 +107,24 @@
 <div class="mt-8">
   <a href="" class="text-white text-4xl font-bold ml-16 p-4 pt-6">Ofertas Especiales</a>
 </div>
+
+
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-20 mb-20 ml-16">
+    <a href="#">
+        <img class="rounded-t-lg" src="https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg" alt="" />
+    </a>
+    <div class="p-5">
+        <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+        </a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 gap-2 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Comprar
+            <img src="/assets/shopping-cart_icon-icons.com_65051.png" class="w-5 h-5 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
+        </a>
+    </div>
+</div>
+
 
 <!-- Lógica del carrusel en línea -->
 <script type="text/javascript">

@@ -1,124 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav class="bg-gray-800 p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-            </div>
-            <div class="hidden md:block">
-                <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="md:hidden">
-            <div class="flex flex-col space-y-2 p-4 bg-gray-700">
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-            </div>
-        </div>
-    </nav>
+<nav class="bg-gray-800 p-4 shadow-lg">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
+    <div class="hidden md:flex space-x-6">
+      <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+      <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+    </div>
+    <div class="hidden md:block">
+      <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+    </div>
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
 
-    <!-- app.component.html -->
-<div class="w-full h-[30vh] bg-gradient-to-r from-[#171a21] via-[#4b4e54] to-[#171a21] flex items-center justify-center">
-  <h1 class="text-white text-5xl font-bold">Catálogo</h1>
+<!-- Filtro por categoría -->
+<div class="w-full bg-gray-700 p-4 flex flex-col md:flex-row md:justify-center md:space-x-4">
+  <div class="flex space-x-2 mb-4 md:mb-0">
+    <button (click)="filterCategory('videojuegos')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+      Videojuegos
+    </button>
+    <button (click)="filterCategory('merchandising')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+      Merchandising
+    </button>
+  </div>
+  
+  <input 
+    type="text" 
+    [(ngModel)]="searchQuery" 
+    class="px-4 py-2 rounded-md mb-4 md:mb-0" 
+    placeholder="Buscar por nombre..." 
+  />
+  
+  <select 
+    [(ngModel)]="order" 
+    (change)="orderByPrice()" 
+    class="px-4 py-2 rounded-md"
+  >
+    <option value="default">Ordenar por precio</option>
+    <option value="asc">Menor a mayor</option>
+    <option value="desc">Mayor a menor</option>
+  </select>
 </div>
 
+<!-- Productos -->
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+    <div *ngFor="let product of filteredProducts" class="group" [attr.data-name]="product.name" [attr.data-price]="product.price">
+      <img [src]="product.image" class="h-full w-full object-cover object-center group-hover:opacity-75" />
+      <h3 class="mt-4 text-sm text-white">{{ product.name }}</h3>
+      <p class="mt-1 text-lg font-medium text-white">${{ product.price }} MX</p>
+    </div>
+  </div>
+</div>
 
-
-
-    <div>
-        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          
-      
-          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$500.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$400.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$350.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$250.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-01.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$500.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-02.jpg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$400.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-03.jpg" alt="Person using a pen to cross a task off a productivity paper card." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$350.00 MX</p>
-            </a>
-            <a href="#" class="group">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-blue-500 xl:aspect-h-8 xl:aspect-w-7">
-                <img src="https://tailwindui.com/plus/img/ecommerce-images/category-page-04-image-card-04.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="h-full w-full object-cover object-center group-hover:opacity-75">
-              </div>
-              <h3 class="mt-4 text-sm text-white">Nombre juego</h3>
-              <p class="mt-1 text-lg font-medium text-white">$250.00 MX</p>
-            </a>
-      
-            <!-- More products... -->
-          </div>
-        </div>
-      </div>
-    
-
-      <footer class="bg-gray-800 text-white py-6 mt-8">
-        <div class="container mx-auto">
-            <p class="text-gray-400">Contacto: infojuegosfera.com</p>
-            <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
-        </div>
-      </footer>
-</body>
-</html>
+<footer class="bg-gray-800 text-white py-6 mt-8">
+  <div class="container mx-auto">
+    <p class="text-gray-400">Contacto: infojuegosfera.com</p>
+    <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+  </div>
+</footer>
