@@ -22,15 +22,22 @@ export class RegistroComponent {
     }, { validator: this.checkPasswords });
   }
 
-  getLoggedInUser() {
-    return this.authService.currentUser ? this.authService.currentUser.displayName : 'No user logged in';
-  }
-
   checkPasswords(group: FormGroup) {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { notSame: true };
   }
+
+  async onGoogleSignIn() {
+    const { user, error } = await this.authService.signInWithGoogle();
+    
+    if (error) {
+      console.error('Google sign-in error:', error);
+    } else {
+      console.log('Google sign-in successful:', user);
+    }
+  }
+  
 
   async onSignUp() {
     if (this.signUpForm.valid) {
