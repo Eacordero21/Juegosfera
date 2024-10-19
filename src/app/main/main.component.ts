@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';  // Validators added for form validation
 import { DataService } from '../services/data.service';  // Ensure correct path to DataService
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-main',
@@ -9,34 +11,22 @@ import { DataService } from '../services/data.service';  // Ensure correct path 
 })
 export class MainComponent {
   // Form variables
-  dataForm: FormGroup;
+  signInForm: FormGroup;
 
   // Slideshow variables
   currentSlide: number = 0;
   slides: number[] = [0, 1, 2];
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
-    // Initialize the form with validators
-    this.dataForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
-    });
+  getLoggedInUser() {
+    return this.authService.currentUser ? this.authService.currentUser.displayName : 'No user logged in';
   }
 
-  // Handle form submission
-  onSubmit() {
-    if (this.dataForm.valid) {
-      this.dataService.addData(this.dataForm.value).then(() => {
-        console.log('Data added successfully!');
-        this.dataForm.reset();  // Reset the form after submission
-      }).catch((error) => {
-        console.error('Error adding data:', error);  // Handle submission error
-      });
-      
-    } else {
-      console.log('Form is invalid');
-    }
+
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.signInForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]], // Changed to 'email'
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
   }
 
   // Slideshow logic
