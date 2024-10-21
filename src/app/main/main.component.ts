@@ -22,7 +22,7 @@ export class MainComponent {
   }
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]], // Changed to 'email'
       password: ['', [Validators.required, Validators.minLength(6)]],

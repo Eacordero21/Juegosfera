@@ -1,69 +1,79 @@
-<nav class="bg-gray-800 p-4 shadow-lg">
-  <div class="container mx-auto flex justify-between items-center">
-    <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
-    <div class="hidden md:flex space-x-6">
-      <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-      <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-      <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="bg-gray-800 p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
+      <div class="hidden md:flex space-x-6">
+        <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+        <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+        <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+        <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+        <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+      </div>
+      <div class="hidden md:block">
+        <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">{{ authService.currentUser?.displayName || authService.currentUser?.email }}</a>
     </div>
-    <div class="hidden md:block">
-      <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-white focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="md:hidden">
-      <button id="mobile-menu-button" class="text-white focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
+  </nav>
+
+  <!-- Filtro por categoría -->
+  <div class="w-full bg-gray-700 p-4 flex flex-col md:flex-row md:justify-center md:space-x-4">
+    <div class="flex space-x-2 mb-4 md:mb-0">
+      <button (click)="filterCategory('videojuegos')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Videojuegos
+      </button>
+      <button (click)="filterCategory('merchandising')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+        Merchandising
       </button>
     </div>
+    
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      class="px-4 py-2 rounded-md mb-4 md:mb-0" 
+      placeholder="Buscar por nombre..." 
+    />
+    
+    <select 
+      [(ngModel)]="order" 
+      (change)="orderByPrice()" 
+      class="px-4 py-2 rounded-md"
+    >
+      <option value="default">Ordenar por precio</option>
+      <option value="asc">Menor a mayor</option>
+      <option value="desc">Mayor a menor</option>
+    </select>
   </div>
-</nav>
 
-<!-- Filtro por categoría -->
-<div class="w-full bg-gray-700 p-4 flex flex-col md:flex-row md:justify-center md:space-x-4">
-  <div class="flex space-x-2 mb-4 md:mb-0">
-    <button (click)="filterCategory('videojuegos')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-      Videojuegos
-    </button>
-    <button (click)="filterCategory('merchandising')" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-      Merchandising
-    </button>
-  </div>
-  
-  <input 
-    type="text" 
-    [(ngModel)]="searchQuery" 
-    class="px-4 py-2 rounded-md mb-4 md:mb-0" 
-    placeholder="Buscar por nombre..." 
-  />
-  
-  <select 
-    [(ngModel)]="order" 
-    (change)="orderByPrice()" 
-    class="px-4 py-2 rounded-md"
-  >
-    <option value="default">Ordenar por precio</option>
-    <option value="asc">Menor a mayor</option>
-    <option value="desc">Mayor a menor</option>
-  </select>
-</div>
-
-<!-- Productos -->
-<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-  <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-    <div *ngFor="let product of filteredProducts" class="group" [attr.data-name]="product.name" [attr.data-price]="product.price">
-      <img [src]="product.image" class="h-full w-full object-cover object-center group-hover:opacity-75" />
-      <h3 class="mt-4 text-sm text-white">{{ product.name }}</h3>
-      <p class="mt-1 text-lg font-medium text-white">${{ product.price }} MX</p>
+  <!-- Productos -->
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      <div *ngFor="let product of filteredProducts" class="group" [attr.data-name]="product.name" [attr.data-price]="product.price">
+        <img [src]="product.image" class="h-full w-full object-cover object-center group-hover:opacity-75" />
+        <h3 class="mt-4 text-sm text-white">{{ product.name }}</h3>
+        <p class="mt-1 text-lg font-medium text-white">${{ product.price }} MX</p>
+      </div>
     </div>
   </div>
-</div>
 
-<footer class="bg-gray-800 text-white py-6 mt-8">
-  <div class="container mx-auto">
-    <p class="text-gray-400">Contacto: infojuegosfera.com</p>
-    <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
-  </div>
-</footer>
+  <footer class="bg-gray-800 text-white py-6 mt-8">
+    <div class="container mx-auto">
+      <p class="text-gray-400">Contacto: infojuegosfera.com</p>
+      <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>

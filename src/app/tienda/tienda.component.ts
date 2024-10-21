@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
+
+
 
 
 @Component({
   selector: 'app-tienda',
   templateUrl: './tienda.component.html',
   styleUrls: ['./tienda.component.css']
+  
 })
 export class TiendaComponent {
+  userRole$: Observable<string | null>;
+
+
+  constructor(public authService: AuthService) {
+    this.userRole$ = this.authService.userRole.asObservable(); // Subscribe to the role changes
+  }
 
   searchQuery: string = '';
   order: string = 'default';
