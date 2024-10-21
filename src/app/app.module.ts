@@ -16,11 +16,14 @@ import { environment } from '../environments/environment';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { TiendaComponent } from './tienda/tienda.component';
-import { NoticiasComponent } from './noticias/noticias.component'; // Importa TiendaComponent
+import { NoticiasComponent } from './noticias/noticias.component';
+import { DescripcionComponent } from './descripcion/descripcion.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { AyudaComponent } from './ayuda/ayuda.component'; // Importa TiendaComponent
 
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

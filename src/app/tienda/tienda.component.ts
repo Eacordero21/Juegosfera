@@ -25,8 +25,12 @@ export class TiendaComponent {
   products = [
     { name: 'Juego 1', category: 'videojuegos', price: 500, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
     { name: 'Juego 2', category: 'videojuegos', price: 350, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Playera 1', category: 'merchandising', price: 250, image: 'https://m.media-amazon.com/images/I/61MFx4a7SJL._AC_UF894,1000_QL80_.jpg' },
-    { name: 'Gorra 1', category: 'merchandising', price: 150, image: 'https://m.media-amazon.com/images/I/61MFx4a7SJL._AC_UF894,1000_QL80_.jpg' },
+    { name: 'Juego 3', category: 'videojuegos', price: 450, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { name: 'Juego 4', category: 'videojuegos', price: 600, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { name: 'Playera 1', category: 'merchandising', price: 250, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { name: 'Playera 2', category: 'merchandising', price: 150, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { name: 'Playera 3', category: 'merchandising', price: 350, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { name: 'Playera 4', category: 'merchandising', price: 400, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
     // Agrega más productos aquí
   ];
 
