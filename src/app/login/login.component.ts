@@ -13,7 +13,7 @@ export class LoginComponent {
   successMessage: string | null = null;
   loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, public authService: AuthService) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]], // Changed to 'email'
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -48,16 +48,6 @@ export class LoginComponent {
       }
     } else {
       this.errorMessage = 'Please fill out all fields correctly.';
-    }
-  }
-
-  async onGoogleSignIn() {
-    const { user, error } = await this.authService.signInWithGoogle();
-    
-    if (error) {
-      console.error('Google sign-in error:', error);
-    } else {
-      console.log('Google sign-in successful:', user);
     }
   }
 }

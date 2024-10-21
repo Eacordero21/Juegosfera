@@ -15,11 +15,12 @@ import { DataService } from './services/data.service';  // Ensure correct path t
 import { environment } from '../environments/environment';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
-import { TiendaComponent } from './tienda/tienda.component'; // Importa TiendaComponent
+import { TiendaComponent } from './tienda/tienda.component';
+import { NoticiasComponent } from './noticias/noticias.component'; // Importa TiendaComponent
 
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

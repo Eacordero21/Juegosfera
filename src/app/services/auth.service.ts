@@ -14,7 +14,9 @@ import {
   GoogleAuthProvider,
   UserCredential
 } from '@angular/fire/auth';
-import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +24,7 @@ import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 export class AuthService {
   currentUser: User | null = null;
   loading: boolean = false;
+  userRole: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private auth: Auth, private firestore: Firestore) {
     // Listen for changes in auth state (e.g., login/logout)
@@ -72,16 +75,17 @@ export class AuthService {
     }
   }
 
-  // Create user profile in Firestore
   private async createUserProfileInFirestore(uid: string, email: string, username: string) {
     const userRef = doc(this.firestore, `users/${uid}`);
     await setDoc(userRef, {
       uid,
       email,
       username,
+      role: 'user', // Set the default role as 'user'
       createdAt: new Date(),
     });
   }
+  
 
   // Email and password sign-in
   async signIn(email: string, password: string): Promise<{ user: User | null; error: string | null }> {
@@ -105,13 +109,31 @@ export class AuthService {
     }
   }
 
-  // Listen for auth state changes
-  authStateListener() {
-    onAuthStateChanged(this.auth, (user) => {
+  async authStateListener() {
+    onAuthStateChanged(this.auth, async (user) => {
       this.currentUser = user;
-      console.log(user ? 'User is logged in:' : 'User is logged out', user);
+      if (user) {
+        // If user is logged in, fetch the role from Firestore
+        const userDocRef = doc(this.firestore, `users/${user.uid}`);
+        const userDocSnap = await getDoc(userDocRef);
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          const role = userData['role'] || 'user'; // Get the user's role from Firestore
+          this.userRole.next(role); // Set role in BehaviorSubject
+
+          // Log the role to the console
+          console.log(`User role for ${user.email}:`, role);
+        } else {
+          this.userRole.next('user'); // Default role
+          console.log(`User role for ${user.email}: user (default)`);
+        }
+      } else {
+        this.userRole.next(null); // No user logged in
+        console.log('No user logged in');
+      }
     });
   }
+  
 
   // Set authentication persistence
   async setAuthPersistence(persistenceType: 'local' | 'session') {

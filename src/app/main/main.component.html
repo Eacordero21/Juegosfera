@@ -13,12 +13,12 @@
             <div class="hidden md:flex space-x-6">
                 <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
                 <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
             </div>
             <div class="hidden md:block">
-                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">Iniciar Sesión</a>
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">{{ authService.currentUser?.displayName || authService.currentUser?.email }}</a>
             </div>
             <div class="md:hidden">
                 <button id="mobile-menu-button" class="text-white focus:outline-none">
@@ -32,7 +32,8 @@
             <div class="flex flex-col space-y-2 p-4 bg-gray-700">
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+                                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
                 <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
             </div>
