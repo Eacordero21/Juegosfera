@@ -28,12 +28,21 @@
                     <img src="/assets/corazon sin cuadro.png" class="w-8 h-7 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
                 </button>
     
-                <!-- Login -->
-                <div class="hidden md:block">
-                    <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                        
-                    </a>
-                </div>
+                <!-- If user is logged in, show user's name or email -->
+            <div *ngIf="authService.currentUser; else notLoggedIn" class="hidden md:block">
+              <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+              {{ authService.currentUser?.displayName || authService.currentUser?.email }}
+              </a>
+          </div>
+          
+          <!-- If user is not logged in, show "Iniciar sesión" -->
+          <ng-template #notLoggedIn>
+              <div class="hidden md:block">
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                    Iniciar sesión
+                </a>
+              </div>
+          </ng-template>
             </div>
     
             <!-- Menú para pantallas pequeñas -->

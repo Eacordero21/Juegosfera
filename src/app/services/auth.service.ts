@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router
 import { 
   Auth, 
   User, 
@@ -26,7 +27,7 @@ export class AuthService {
   loading: boolean = false;
   userRole: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
-  constructor(private auth: Auth, private firestore: Firestore) {
+  constructor(private auth: Auth, private firestore: Firestore, private router: Router) {
     // Listen for changes in auth state (e.g., login/logout)
     this.authStateListener();
   }
@@ -43,6 +44,9 @@ export class AuthService {
     if (additionalUserInfo?.isNewUser && user) {
       await this.createUserProfileInFirestore(user.uid, user.email as string, user.displayName as string);
     }
+
+    // Redirect to the main page after successful sign up
+    this.router.navigate(['/main']);  // Adjust '/main' to the appropriate route
 
     console.log('Google sign-in successful:', user);
     return { user, error: null };
@@ -66,6 +70,9 @@ export class AuthService {
   
       // Optionally sign the user out immediately after registration
       await this.signOut(); 
+
+      // Redirect to the main page after successful sign up
+      this.router.navigate(['/login']);  // Adjust '/main' to the appropriate route
   
       console.log('User signed up and signed out:', user);
       return null; // Success
@@ -92,6 +99,8 @@ export class AuthService {
     try {
       const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
       console.log('User signed in:', userCredential.user);
+      // Redirect to the main page after successful sign up
+      this.router.navigate(['/main']);  // Adjust '/main' to the appropriate route
       return { user: userCredential.user, error: null };
     } catch (error: any) {
       console.error('Login error:', error.message);
@@ -104,6 +113,8 @@ export class AuthService {
     try {
       await signOut(this.auth);
       console.log('User signed out');
+      // Redirect to the main page after successful sign up
+      this.router.navigate(['/main']);  // Adjust '/main' to the appropriate route
     } catch (error) {
       console.error('Error signing out:', error);
     }

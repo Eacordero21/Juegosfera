@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';  // Validators added for form validation
 
 @Component({
   selector: 'app-descripcion',
@@ -8,6 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DescripcionComponent implements OnInit {
   product: any;  // Aquí almacenaremos el producto actual
+  
+  // Form variables
+  signInForm: FormGroup;
+
+
+  getLoggedInUser() {
+    return this.authService.currentUser ? this.authService.currentUser.displayName : 'No user logged in';
+  }
 
   // Lista de productos (puedes obtener esto desde un servicio también)
   products = [
@@ -16,7 +26,12 @@ export class DescripcionComponent implements OnInit {
     { id: 3, name: 'Juego 3', sku: 'WH3000XT3', description: 'Juego de estrategia por turnos con un mapa enorme y gran detalle.', price: 450, discountPrice: 400, image: '/assets/WhatsApp Image 2024-10-22 at 12.44.43 PM.jpeg', features: ['Modo historia', 'Multijugador', 'Expansión de mundo'] }
   ];
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private fb: FormBuilder, public authService: AuthService) {
+    this.signInForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]], // Changed to 'email'
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+   }
 
   ngOnInit(): void {
     // Capturar el id de la URL

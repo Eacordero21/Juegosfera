@@ -31,6 +31,16 @@ export class LoginComponent {
     this.errorMessage = 'You have been logged out.'; // Optional message
   }
 
+  async onGoogleSignIn() {
+    const { user, error } = await this.authService.signInWithGoogle();
+    
+    if (error) {
+      console.error('Google sign-in error:', error);
+    } else {
+      console.log('Google sign-in successful:', user);
+    }
+  }
+
   async onSubmit() {
     if (this.signInForm.valid) {
       this.loading = true;
