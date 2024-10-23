@@ -7,43 +7,75 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="body">
-    <nav class="bg-gray-800 p-4 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-2xl font-bold">Juegosfera</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-            </div>
-            <div class="hidden md:block">
-                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">{{ authService.currentUser?.displayName || authService.currentUser?.email }}</a>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
+  <nav class="bg-gray-800 p-4 shadow-lg">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Sección izquierda: logotipo -->
+        <div class="flex items-center">
+            <img src="/assets/logo.png" alt="Logo Juegosfera" class="h-10 w-10 mr-3">
+            <span class="text-white text-xl font-semibold">Juegosfera</span>
         </div>
-        <div id="mobile-menu" class="md:hidden">
-            <div class="flex flex-col space-y-2 p-4 bg-gray-700">
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
 
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="#" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+        <!-- Menú de navegación en pantallas grandes -->
+        <div class="hidden md:flex space-x-6 items-center">
+            <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+            <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+            <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+            <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+            <a href="/ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+
+            <!-- Ícono personalizado -->
+            <button class="p-2 focus:outline-none">
+                <img src="/assets/corazon sin cuadro.png" class="w-8 h-7 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
+            </button>
+
+            <!-- Login -->
+            <div class="hidden md:block">
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                    {{ authService.currentUser?.displayName || authService.currentUser?.email }}
+                </a>
             </div>
         </div>
-    </nav>
+
+        <!-- Menú para pantallas pequeñas -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menú desplegable en móviles -->
+    <div id="mobile-menu" class="hidden md:hidden">
+        <div class="flex flex-col space-y-2 p-4 bg-gray-700">
+            <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
+            <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
+            <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
+            <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
+            <a href="/ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
+
+            <!-- Ícono personalizado en menú móvil -->
+            <button class="p-2 focus:outline-none">
+                <img src="/assets/corazon sin cuadro.png" class="w-15 h-10 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
+            </button>
+
+            <!-- Login en móviles -->
+            <div class="block">
+                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                    {{ authService.currentUser?.displayName || authService.currentUser?.email }}
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
 
 <!-- Imagen con botón e ícono con transparencia -->
 <div class="relative w-full">
   <!-- Imagen de fondo -->
-  <img src="https://sm.ign.com/ign_latam/feature/h/how-to-pla/how-to-play-the-resident-evil-games-in-chronological-order_kaq4.jpg" class="w-full h-96 object-cover opacity-30" alt="Juego destacado">
+  <img src="/assets/WhatsApp Image 2024-10-22 at 12.40.02 PM.jpeg" class="w-full h-96 object-cover opacity-30" alt="Juego destacado">
 
   <!-- Superposición semi-transparente para darle un efecto de oscurecimiento -->
   <div class="absolute inset-0 bg-black opacity-20"></div>
@@ -73,18 +105,18 @@
 
 
     
-    <!-- main.component.html -->
+  <!-- main.component.html -->
 <div class="relative w-full max-w-7xl mx-auto overflow-hidden rounded-lg shadow-lg mt-12">
   <!-- Contenedor de los slides con la lógica de desplazamiento -->
   <div class="flex transition-transform duration-500" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
       <div class="flex-shrink-0 w-full">
-          <img src="https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg" class="w-full h-90 object-cover" alt="Slide 1">
+          <img src="/assets/Portada truth1.png" class="w-full h-[700px] object-cover" alt="Slide 1">
       </div>
       <div class="flex-shrink-0 w-full">
-          <img src="https://wallpapers.com/images/featured/1280-x-720-juegos-dy2yl9hawgkkzxgd.jpg" class="w-full h-90 object-cover" alt="Slide 2">
+          <img src="/assets/WhatsApp Image 2024-10-22 at 12.40.02 PM.jpeg" class="w-full h-[700px] object-cover" alt="Slide 2">
       </div>
       <div class="flex-shrink-0 w-full">
-          <img src="https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg" class="w-full h-90 object-cover" alt="Slide 3">
+          <img src="/assets/WhatsApp Image 2024-10-22 at 12.44.43 PM.jpeg" class="w-full h-[700px] object-cover" alt="Slide 3">
       </div>
   </div>
 
@@ -115,27 +147,26 @@
       <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl">
         <div class="relative">
           <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-600 opacity-75"></div>
-          <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Resi4-gc-cover.jpg" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
+          <img src="/assets/Portada truth1.png" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
           <div class="absolute top-4 right-4 bg-blue-100 text-xs font-bold px-3 py-2 rounded-full z-20 transform rotate-12">
             NUEVO</div>
         </div>
         <div class="p-6">
-          <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Cosmic Headphones</h2>
-          <p class="text-white mb-4">Experience music like never before with our state-of-the-art Cosmic Headphones.
-            Immerse yourself in crystal-clear sound and unparalleled comfort.</p>
+          <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Truth</h2>
+          <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <div class="flex items-center justify-between mb-4">
-            <span class="text-2xl font-bold text-white">$299.99</span>
+            <span class="text-2xl font-bold text-white">$299.99 MX</span>
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20"
                 fill="currentColor">
                 <path
                   d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
-              <span class="ml-1 text-white">4.9 (120 reviews)</span>
+              <span class="ml-1 text-white">4.4 (5 reseñas)</span>
             </div>
           </div>
           <button class="w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                Add to Cart
+                Añadir al carrito
           </button>
         </div>
       </div>
@@ -146,26 +177,25 @@
         <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl">
             <div class="relative">
               <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-600 opacity-75"></div>
-              <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Resi4-gc-cover.jpg" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
+              <img src="/assets/WhatsApp Image 2024-10-22 at 12.40.02 PM.jpeg" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
               
             </div>
             <div class="p-6">
-              <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Cosmic Headphones</h2>
-              <p class="text-white mb-4">Experience music like never before with our state-of-the-art Cosmic Headphones.
-                Immerse yourself in crystal-clear sound and unparalleled comfort.</p>
+              <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Elara Lost Destiny</h2>
+              <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               <div class="flex items-center justify-between mb-4">
-                <span class="text-2xl font-bold text-white">$299.99</span>
+                <span class="text-2xl font-bold text-white">$299.99 MX</span>
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20"
                     fill="currentColor">
                     <path
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  <span class="ml-1 text-white">4.9 (120 reviews)</span>
+                  <span class="ml-1 text-white">4.2 (8 reseñas)</span>
                 </div>
               </div>
               <button class="w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                    Add to Cart
+                    Añadir al carrito
               </button>
             </div>
           </div>
@@ -176,26 +206,25 @@
         <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden hover:shadow-3xl">
             <div class="relative">
               <div class="absolute inset-0 bg-gradient-to-br from-purple-400 to-indigo-600 opacity-75"></div>
-              <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Resi4-gc-cover.jpg" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
+              <img src="/assets/WhatsApp Image 2024-10-22 at 12.44.43 PM.jpeg" alt="Product Image" class="w-full h-64 object-cover object-center relative z-10">
               
             </div>
             <div class="p-6">
-              <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Cosmic Headphones</h2>
-              <p class="text-white mb-4">Experience music like never before with our state-of-the-art Cosmic Headphones.
-                Immerse yourself in crystal-clear sound and unparalleled comfort.</p>
+              <h2 class="text-3xl font-extrabold text-blue-700 mb-2">Dark Ages</h2>
+              <p class="text-white mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
               <div class="flex items-center justify-between mb-4">
-                <span class="text-2xl font-bold text-white">$299.99</span>
+                <span class="text-2xl font-bold text-white">$299.99 MX</span>
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20"
                     fill="currentColor">
                     <path
                       d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
-                  <span class="ml-1 text-white">4.9 (120 reviews)</span>
+                  <span class="ml-1 text-white">4.3 (10 reseñas)</span>
                 </div>
               </div>
               <button class="w-full bg-blue-700 text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                    Add to Cart
+                    Añadir al carrito
               </button>
             </div>
           </div>

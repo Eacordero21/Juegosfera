@@ -23,14 +23,14 @@ export class TiendaComponent {
   order: string = 'default';
 
   products = [
-    { name: 'Juego 1', category: 'videojuegos', price: 500, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Juego 2', category: 'videojuegos', price: 350, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Juego 3', category: 'videojuegos', price: 450, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Juego 4', category: 'videojuegos', price: 600, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Playera 1', category: 'merchandising', price: 250, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Playera 2', category: 'merchandising', price: 150, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Playera 3', category: 'merchandising', price: 350, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
-    { name: 'Playera 4', category: 'merchandising', price: 400, image: 'https://wallpapers.com/images/hd/1280-x-720-gaming-soqj7bpn2ev1xmi4.jpg' },
+    { id: 1, name: 'Juego 1', category: 'videojuegos', price: 500, image: '/assets/Portada truth1.png' },
+    { id: 2, name: 'Juego 2', category: 'videojuegos', price: 350, image: '/assets/WhatsApp Image 2024-10-22 at 12.40.02 PM.jpeg' },
+    { id: 3, name: 'Juego 3', category: 'videojuegos', price: 450, image: '/assets/WhatsApp Image 2024-10-22 at 12.44.43 PM.jpeg' },
+    { id: 4, name: 'Juego 4', category: 'videojuegos', price: 600, image: '/assets/Portada truth1.png' },
+    { id: 5, name: 'Playera 1', category: 'merchandising', price: 250, image: 'https://www.playerasmark.com/woo_mark/assets/media/2023/10/PLAYERA-HO-CUELLO-REDONDO-NEGRA-scaled.jpg' },
+    { id: 6, name: 'Playera 2', category: 'merchandising', price: 150, image: 'https://www.playerasmark.com/woo_mark/assets/media/2023/10/PLAYERA-HO-CUELLO-REDONDO-NEGRA-scaled.jpg' },
+    { id: 7, name: 'Playera 3', category: 'merchandising', price: 350, image: 'https://www.playerasmark.com/woo_mark/assets/media/2023/10/PLAYERA-HO-CUELLO-REDONDO-NEGRA-scaled.jpg' },
+    { id: 8, name: 'Playera 4', category: 'merchandising', price: 400, image: 'https://www.playerasmark.com/woo_mark/assets/media/2023/10/PLAYERA-HO-CUELLO-REDONDO-NEGRA-scaled.jpg' },
     // Agrega más productos aquí
   ];
 

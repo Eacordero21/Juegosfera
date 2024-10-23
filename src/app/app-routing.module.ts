@@ -5,6 +5,9 @@ import { TiendaComponent } from './tienda/tienda.component';  // Importa el comp
 import { LoginComponent } from './login/login.component';  // Importa el componente
 import { RegistroComponent } from './registro/registro.component';  // Importa el componente
 import { NoticiasComponent } from './noticias/noticias.component';  // Importa el componente
+import { FaqsComponent } from './faqs/faqs.component';  // Importa el componente
+import { AyudaComponent } from './ayuda/ayuda.component';  // Importa el componente
+import { DescripcionComponent } from './descripcion/descripcion.component';  // Importa el componente
 
 
 const routes: Routes = [
@@ -12,8 +15,11 @@ const routes: Routes = [
   { path: 'main', component: MainComponent }, // Configura la ruta para el inicio
   { path: 'tienda', component: TiendaComponent }, // Configura la ruta para la tienda
   { path: 'login', component: LoginComponent }, // Configura la ruta para el login
-  { path: 'registro', component: RegistroComponent }, // Configura la ruta para la tienda
-  { path: 'noticias', component: NoticiasComponent }, // Configura la ruta para la tienda
+  { path: 'registro', component: RegistroComponent }, // Configura la ruta 
+  { path: 'noticias', component: NoticiasComponent }, // Configura la ruta
+  { path: 'faqs', component: FaqsComponent }, // Configura la ruta
+  { path: 'ayuda', component: AyudaComponent }, // Configura la ruta
+  { path: 'descripcion/:id', component: DescripcionComponent },  // Nueva ruta para la descripción
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
