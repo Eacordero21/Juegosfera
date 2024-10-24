@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'noticias', component: NoticiasComponent }, // Configura la ruta
   { path: 'faqs', component: FaqsComponent }, // Configura la ruta
   { path: 'ayuda', component: AyudaComponent }, // Configura la ruta
-  { path: 'descripcion/:id', component: DescripcionComponent },  // Nueva ruta para la descripción
+  { path: 'descripcion/:id', component: DescripcionComponent, },  // Nueva ruta para la descripción
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

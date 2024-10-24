@@ -19,11 +19,12 @@ import { TiendaComponent } from './tienda/tienda.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { DescripcionComponent } from './descripcion/descripcion.component';
 import { FaqsComponent } from './faqs/faqs.component';
-import { AyudaComponent } from './ayuda/ayuda.component'; // Importa TiendaComponent
+import { AyudaComponent } from './ayuda/ayuda.component';
+import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

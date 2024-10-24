@@ -31,7 +31,7 @@
             <!-- If user is logged in, show user's name or email -->
             <div *ngIf="authService.currentUser; else notLoggedIn" class="hidden md:block">
                 <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                {{ authService.currentUser?.displayName || authService.currentUser?.email }}
+                {{ authService.currentUser.displayName || authService.currentUser.email }}
                 </a>
             </div>
             
