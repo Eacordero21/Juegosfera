@@ -8,6 +8,7 @@ import { NoticiasComponent } from './noticias/noticias.component';  // Importa e
 import { FaqsComponent } from './faqs/faqs.component';  // Importa el componente
 import { AyudaComponent } from './ayuda/ayuda.component';  // Importa el componente
 import { DescripcionComponent } from './descripcion/descripcion.component';  // Importa el componente
+import { CartComponent } from './cart/cart.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'noticias', component: NoticiasComponent }, // Configura la ruta
   { path: 'faqs', component: FaqsComponent }, // Configura la ruta
   { path: 'ayuda', component: AyudaComponent }, // Configura la ruta
+  { path: 'cart', component: CartComponent },
   { path: 'descripcion/:id', component: DescripcionComponent, },  // Nueva ruta para la descripción
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
