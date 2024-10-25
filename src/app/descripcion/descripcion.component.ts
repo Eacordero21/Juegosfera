@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';  // Validators added for form validation
+import { CartService } from '../services/cart.service'; // Import CartService
 
 @Component({
   selector: 'app-descripcion',
@@ -9,17 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';  // Validat
   styleUrls: ['./descripcion.component.css']
 })
 export class DescripcionComponent implements OnInit {
-  product: any;  // Aquí almacenaremos el producto actual
-  
-  // Form variables
-  signInForm: FormGroup;
+  product: any;
+  errorMessage: string | null = null;
 
-
-  getLoggedInUser() {
-    return this.authService.currentUser ? this.authService.currentUser.displayName : 'No user logged in';
-  }
-
-  // Lista de productos (puedes obtener esto desde un servicio también)
   products = [
     { id: 1, name: 'Juego 1', sku: 'WH1000XM4', description: 'Juego de aventura épico con gráficos impresionantes.', price: 500, image: '/assets/Portada truth1.png', features: ['Inmersión total', 'Multijugador', 'Alta resolución'] },
     { id: 2, name: 'Juego 2', sku: 'WH2000AB1', description: 'Juego de carreras con físicas realistas y gráficos en 3D.', price: 350, image: '/assets/WhatsApp Image 2024-10-22 at 12.40.02 PM.jpeg', features: ['Competencias online', 'Alta velocidad', 'Multijugador'] },
@@ -31,19 +23,34 @@ export class DescripcionComponent implements OnInit {
     { id: 8, name: 'Juego 8', sku: 'WH8000XT8', description: 'Juego de estrategia por turnos con un mapa enorme y gran detalle.', price: 450, image: '/assets/WhatsApp Image 2024-10-22 at 12.44.43 PM.jpeg', features: ['Modo historia', 'Multijugador', 'Expansión de mundo'] }
   ];
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, public authService: AuthService) {
-    this.signInForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]], // Changed to 'email'
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    });
-   }
+  constructor(
+    private route: ActivatedRoute, 
+    public authService: AuthService,
+    private cartService: CartService // Inject CartService
+  ) {}
 
   ngOnInit(): void {
-    // Capturar el id de la URL
     const productId = Number(this.route.snapshot.paramMap.get('id'));
-    
-    // Buscar el producto con el id correspondiente
     this.product = this.products.find(p => p.id === productId);
+    
+    if (!this.product) {
+      this.errorMessage = 'Producto no encontrado.';
+    } else {
+      this.errorMessage = null;
+    }
+  }
+
+  addToCart() {
+    if (this.product) {
+      this.cartService.addToCart(this.product);
+      alert(`${this.product.name} ha sido añadido al carrito.`);
+    } else {
+      alert('Producto no disponible.');
+    }
+  }
+  
+
+  getLoggedInUser() {
+    return this.authService.currentUser ? this.authService.currentUser.displayName : 'No user logged in';
   }
 }
-

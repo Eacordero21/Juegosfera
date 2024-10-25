@@ -21,10 +21,11 @@ import { DescripcionComponent } from './descripcion/descripcion.component';
 import { FaqsComponent } from './faqs/faqs.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe, CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
