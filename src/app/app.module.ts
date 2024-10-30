@@ -3,6 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions'; // Import AngularFireFunctionsModule
+import { FunctionsModule } from '@angular/fire/functions'; // For new AngularFire versions
+
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +32,8 @@ import { CartComponent } from './cart/cart.component';
   declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe, CartComponent],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase
+    FunctionsModule, // Newer version
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,

@@ -7,79 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="body">
-    <nav class="bg-gray-800 p-4 shadow-lg">
-        <div class="container mx-auto flex items-center justify-between">
-            <!-- Sección izquierda: logotipo -->
-            <div class="flex items-center">
-                <img src="/assets/logo.png" alt="Logo Juegosfera" class="h-10 w-10 mr-3">
-                <span class="text-white text-xl font-semibold">Juegosfera</span>
-            </div>
-    
-            <!-- Menú de navegación en pantallas grandes -->
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-                <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="/ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-                <a href="/cart" class="text-gray-300 hover:text-white transition duration-300">Carrito</a>
-    
-                <!-- Ícono personalizado -->
-                <button class="p-2 focus:outline-none">
-                    <img src="/assets/corazon sin cuadro.png" class="w-8 h-7 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
-                </button>
-    
-                <!-- If user is logged in, show user's name or email -->
-            <div *ngIf="authService.currentUser; else notLoggedIn" class="hidden md:block">
-              <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-              {{ authService.currentUser.displayName || authService.currentUser.email }}
-              </a>
-          </div>
-          
-          <!-- If user is not logged in, show "Iniciar sesión" -->
-          <ng-template #notLoggedIn>
-              <div class="hidden md:block">
-                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                    Iniciar sesión
-                </a>
-              </div>
-          </ng-template>
-            </div>
-    
-            <!-- Menú para pantallas pequeñas -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    
-        <!-- Menú desplegable en móviles -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <div class="flex flex-col space-y-2 p-4 bg-gray-700">
-                <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-                <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-                <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-                <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-                <a href="ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-    
-                <!-- Ícono personalizado en menú móvil -->
-                <button class="p-2 focus:outline-none">
-                    <img src="/assets/corazon sin cuadro.png" class="w-15 h-10 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
-                </button>
-    
-                <!-- Login en móviles -->
-                <div class="block">
-                    <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                        
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
     <div class="max-w-6xl mx-auto p-6 bg-gray-900 text-white"> 
       <div *ngIf="product">
         <!-- Contenedor principal del producto --> 
@@ -212,36 +139,74 @@
       
         <div class="mt-12"> 
       
-          <div class="flex space-x-4 border-b border-gray-700"> 
-      
-            <button class="pb-2 text-lg font-semibold text-white border-b-2 border-blue-600">Especificaciones</button> 
-      
-            <button class="pb-2 text-lg font-semibold text-gray-400 hover:text-white transition duration-300">Reseñas</button> 
-      
-          </div> 
-      
-      
-      
-          <!-- Descripción del juego --> 
-      
-          <div class="mt-6"> 
-      
-            <h2 class="text-xl font-semibold mb-4">Sobre el juego</h2> 
-      
-            <p class="mb-4"> 
-      
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      
-            </p> 
-      
-            <p> 
-      
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-      
-            </p> 
-      
-          </div> 
-      
+          <div class="flex space-x-4 border-b border-gray-700">
+            <button 
+              (click)="activeTab = 'especificaciones'" 
+              [ngClass]="{
+                'text-white border-blue-600': activeTab === 'especificaciones',
+                'text-gray-400 hover:text-white': activeTab !== 'especificaciones'
+              }"
+              class="pb-2 text-lg font-semibold border-b-2 transition duration-300"
+            >
+              Especificaciones
+            </button>
+          
+            <button 
+              (click)="activeTab = 'resenas'" 
+              [ngClass]="{
+                'text-white border-blue-600': activeTab === 'resenas',
+                'text-gray-400 hover:text-white': activeTab !== 'resenas'
+              }"
+              class="pb-2 text-lg font-semibold border-b-2 transition duration-300"
+            >
+              Reseñas
+            </button>
+          </div>
+          
+          <!-- Content for Especificaciones -->
+          <div *ngIf="activeTab === 'especificaciones'" class="mt-6">
+            <h2 class="text-xl font-semibold mb-4">Sobre el juego</h2>
+            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+          </div>
+          
+          <!-- Content for Reseñas -->
+          <div *ngIf="activeTab === 'resenas'" class="mt-6">
+            <!-- Display Existing Reviews -->
+            <div *ngFor="let review of reviews$ | async" class="review bg-gray-100 p-4 rounded-lg shadow mb-4">
+              <div class="flex justify-between items-center">
+                <p class="text-lg font-semibold text-gray-800">{{ review.username }}</p>
+                <small class="text-gray-500">{{ review.timestamp.toDate() | date: 'medium' }}</small>
+              </div>
+              <p class="mt-2 text-gray-700">{{ review.comment }}</p>
+            </div>
+
+            <!-- New Review Form for Authenticated Users -->
+            <div *ngIf="authService.currentUser" class="new-review-form mt-6 bg-white p-6 rounded-lg shadow-md">
+              <h3 class="text-xl font-bold text-gray-800 mb-4">Escribe una reseña</h3>
+              <textarea [(ngModel)]="newReview.comment" placeholder="..."
+                        class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 text-gray-800"
+                        rows="4"></textarea>
+              
+              <!-- Rating Dropdown -->
+              <div class="mt-4">
+                <label for="rating" class="block text-gray-700 font-medium">Calificación:</label>
+                <select [(ngModel)]="newReview.rating" id="rating" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+                  <option *ngFor="let estrella of [1, 2, 3, 4, 5]" [value]="estrella" style="color: black;">{{ estrella }} Estrella{{ estrella > 1 ? 's' : '' }}</option>
+                </select>
+              </div>
+              
+              <!-- Submit Button -->
+              <button (click)="addReview()" class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-500 transition">
+                Añadir reseña
+              </button>
+            </div>
+
+            <!-- Login Prompt for Non-Authenticated Users -->
+            <div *ngIf="!authService.currentUser" class="mt-6 bg-yellow-100 p-4 rounded-lg">
+              <p class="text-gray-800">You must be logged in to leave a review.</p>
+            </div>
+
+          </div>
         </div> 
       </div>
     
