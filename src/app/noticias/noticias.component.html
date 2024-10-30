@@ -7,172 +7,101 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="body">
-  <nav class="bg-gray-800 p-4 shadow-lg">
-    <div class="container mx-auto flex items-center justify-between">
-        <!-- Sección izquierda: logotipo -->
-        <div class="flex items-center">
-            <img src="/assets/logo.png" alt="Logo Juegosfera" class="h-10 w-10 mr-3">
-            <span class="text-white text-xl font-semibold">Juegosfera</span>
-        </div>
+    <div class="max-w-screen-2xl mx-auto p-5 sm:p-10 md:p-16">
+    <div class="grid grid-cols-1 sm:grid-cols-12 gap-10">
 
-        <!-- Menú de navegación en pantallas grandes -->
-        <div class="hidden md:flex space-x-6 items-center">
-            <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-            <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-            <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-            <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-            <a href="/ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-
-            <!-- Ícono personalizado -->
-            <button class="p-2 focus:outline-none">
-                <img src="/assets/corazon sin cuadro.png" class="w-8 h-7 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
-            </button>
-
-            <!-- If user is logged in, show user's name or email -->
-            <div *ngIf="authService.currentUser; else notLoggedIn" class="hidden md:block">
-                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                {{ authService.currentUser.displayName || authService.currentUser.email }}
-                </a>
-            </div>
-            
-            <!-- If user is not logged in, show "Iniciar sesión" -->
-            <ng-template #notLoggedIn>
-                <div class="hidden md:block">
-                  <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                      Iniciar sesión
-                  </a>
+        <!-- Primera sección con imagen grande -->
+        <div class="sm:col-span-6 lg:col-span-5">
+            <a href="#">
+                <div class="h-64 sm:h-80 lg:h-96 bg-cover text-center overflow-hidden rounded-lg"
+                    style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
+                    title="Woman holding a mug">
                 </div>
-            </ng-template>
-        </div>
-
-        <!-- Menú para pantallas pequeñas -->
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <!-- Menú desplegable en móviles -->
-    <div id="mobile-menu" class="hidden md:hidden">
-        <div class="flex flex-col space-y-2 p-4 bg-gray-700">
-            <a href="/main" class="text-gray-300 hover:text-white transition duration-300">Inicio</a>
-            <a href="/tienda" class="text-gray-300 hover:text-white transition duration-300">Tienda</a>
-            <a href="/noticias" class="text-gray-300 hover:text-white transition duration-300">Noticias</a>
-            <a href="/faqs" class="text-gray-300 hover:text-white transition duration-300">Preguntas Frecuentes</a>
-            <a href="/ayuda" class="text-gray-300 hover:text-white transition duration-300">Ayuda</a>
-
-            <!-- Ícono personalizado en menú móvil -->
-            <button class="p-2 focus:outline-none">
-                <img src="/assets/corazon sin cuadro.png" class="w-15 h-10 hover:text-blue-700 transition duration-300" alt="Ícono personalizado" />
-            </button>
-
-            <!-- Login en móviles -->
-            <div class="block">
-                <a href="/login" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-                    {{ authService.currentUser?.displayName || authService.currentUser?.email }}
-                </a>
+            </a>
+            <div class="mt-3 bg-gray-900 rounded-lg p-5 flex flex-col justify-between leading-normal">
+                <div class="lg:pl-4">
+                    <a href="#"
+                        class="text-xs text-blue-500 uppercase font-medium mb-3 flex items-center hover:text-blue-300 transition duration-300 ease-in-out">
+                        Fashion
+                    </a>
+                    <a href="#"
+                        class="text-white font-bold text-lg mb-2 hover:text-blue-500 transition duration-300 ease-in-out">The perfect summer sweater that you can wear!</a>
+                    <p class="text-gray-400 text-xs mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
+                </div>
             </div>
         </div>
+
+        <!-- Segunda sección con lista de noticias más pequeñas -->
+        <div class="sm:col-span-6 lg:col-span-4">
+            <div class="flex items-start mb-5">
+                <a href="#" class="inline-block mr-3">
+                    <div class="w-24 h-24 bg-cover bg-center rounded-lg"
+                        style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
+                    </div>
+                </a>
+                <div class="text-sm">
+                    <p class="text-gray-400 text-xs">Aug 18</p>
+                    <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Cristiano Ronaldo of Juventus FC looks dejected during the...</a>
+                </div>
+            </div>
+            <div class="flex items-start mb-5">
+                <a href="#" class="inline-block mr-3">
+                    <div class="w-24 h-24 bg-cover bg-center rounded-lg"
+                        style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
+                    </div>
+                </a>
+                <div class="text-sm w-2/3">
+                    <p class="text-gray-400 text-xs">Jan 18</p>
+                    <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Barcelona v Bayern Munich</a>
+                </div>
+            </div>
+            <div class="flex items-start mb-5">
+                <a href="#" class="inline-block mr-3">
+                    <div class="w-24 h-24 bg-cover bg-center rounded-lg"
+                        style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
+                    </div>
+                </a>
+                <div class="text-sm">
+                    <p class="text-gray-400 text-xs">Aug 18</p>
+                    <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Cristiano Ronaldo of Juventus FC looks dejected during the...</a>
+                </div>
+            </div>
+            <div class="flex items-start">
+                <a href="#" class="inline-block mr-3">
+                    <div class="w-24 h-24 bg-cover bg-center rounded-lg"
+                        style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
+                    </div>
+                </a>
+                <div class="text-sm w-2/3">
+                    <p class="text-gray-400 text-xs">July 23</p>
+                    <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Barcelona v Bayern Munich - UEFA Champions League</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tercera sección con imagen más pequeña -->
+        <div class="sm:col-span-12 lg:col-span-3">
+            <a href="#">
+                <div class="h-64 bg-cover text-center overflow-hidden rounded-lg"
+                    style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
+                    title="Woman holding a mug">
+                </div>
+            </a>
+            <div class="mt-3 bg-gray-900 rounded-lg p-5 flex flex-col justify-between leading-normal">
+                <div class="">
+                    <a href="#"
+                        class="text-xs text-blue-500 uppercase font-medium flex items-center hover:text-blue-300 transition duration-300 ease-in-out">
+                        Fashion
+                    </a>
+                    <a href="#"
+                        class="text-white font-bold text-lg mb-2 hover:text-blue-500 transition duration-300 ease-in-out">The perfect summer sweater that you can wear!</a>
+                    <p class="text-gray-400 text-xs mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
-</nav>
-<div class="max-w-screen-2xl mx-auto p-5 sm:p-10 md:p-16">
-  <div class="grid grid-cols-1 sm:grid-cols-12 gap-10">
-
-      <!-- Primera sección con imagen grande -->
-      <div class="sm:col-span-6 lg:col-span-5">
-          <a href="#">
-              <div class="h-64 sm:h-80 lg:h-96 bg-cover text-center overflow-hidden rounded-lg"
-                  style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                  title="Woman holding a mug">
-              </div>
-          </a>
-          <div class="mt-3 bg-gray-900 rounded-lg p-5 flex flex-col justify-between leading-normal">
-              <div class="lg:pl-4">
-                  <a href="#"
-                      class="text-xs text-blue-500 uppercase font-medium mb-3 flex items-center hover:text-blue-300 transition duration-300 ease-in-out">
-                      Fashion
-                  </a>
-                  <a href="#"
-                      class="text-white font-bold text-lg mb-2 hover:text-blue-500 transition duration-300 ease-in-out">The perfect summer sweater that you can wear!</a>
-                  <p class="text-gray-400 text-xs mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-              </div>
-          </div>
-      </div>
-
-      <!-- Segunda sección con lista de noticias más pequeñas -->
-      <div class="sm:col-span-6 lg:col-span-4">
-          <div class="flex items-start mb-5">
-              <a href="#" class="inline-block mr-3">
-                  <div class="w-24 h-24 bg-cover bg-center rounded-lg"
-                      style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
-                  </div>
-              </a>
-              <div class="text-sm">
-                  <p class="text-gray-400 text-xs">Aug 18</p>
-                  <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Cristiano Ronaldo of Juventus FC looks dejected during the...</a>
-              </div>
-          </div>
-          <div class="flex items-start mb-5">
-              <a href="#" class="inline-block mr-3">
-                  <div class="w-24 h-24 bg-cover bg-center rounded-lg"
-                      style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
-                  </div>
-              </a>
-              <div class="text-sm w-2/3">
-                  <p class="text-gray-400 text-xs">Jan 18</p>
-                  <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Barcelona v Bayern Munich</a>
-              </div>
-          </div>
-          <div class="flex items-start mb-5">
-              <a href="#" class="inline-block mr-3">
-                  <div class="w-24 h-24 bg-cover bg-center rounded-lg"
-                      style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
-                  </div>
-              </a>
-              <div class="text-sm">
-                  <p class="text-gray-400 text-xs">Aug 18</p>
-                  <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Cristiano Ronaldo of Juventus FC looks dejected during the...</a>
-              </div>
-          </div>
-          <div class="flex items-start">
-              <a href="#" class="inline-block mr-3">
-                  <div class="w-24 h-24 bg-cover bg-center rounded-lg"
-                      style="background-image:url(https://tailwindcss.com/img/card-left.jpg);">
-                  </div>
-              </a>
-              <div class="text-sm w-2/3">
-                  <p class="text-gray-400 text-xs">July 23</p>
-                  <a href="#" class="text-white font-medium hover:text-blue-500 leading-tight">Barcelona v Bayern Munich - UEFA Champions League</a>
-              </div>
-          </div>
-      </div>
-
-      <!-- Tercera sección con imagen más pequeña -->
-      <div class="sm:col-span-12 lg:col-span-3">
-          <a href="#">
-              <div class="h-64 bg-cover text-center overflow-hidden rounded-lg"
-                  style="background-image: url('https://tailwindcss.com/img/card-left.jpg')"
-                  title="Woman holding a mug">
-              </div>
-          </a>
-          <div class="mt-3 bg-gray-900 rounded-lg p-5 flex flex-col justify-between leading-normal">
-              <div class="">
-                  <a href="#"
-                      class="text-xs text-blue-500 uppercase font-medium flex items-center hover:text-blue-300 transition duration-300 ease-in-out">
-                      Fashion
-                  </a>
-                  <a href="#"
-                      class="text-white font-bold text-lg mb-2 hover:text-blue-500 transition duration-300 ease-in-out">The perfect summer sweater that you can wear!</a>
-                  <p class="text-gray-400 text-xs mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-              </div>
-          </div>
-      </div>
-
-  </div>
-</div>
+    </div>
 
 
 
