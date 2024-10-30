@@ -26,10 +26,13 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { NumberToArrayPipe } from './pipes/number-to-array.pipe';
 import { CartComponent } from './cart/cart.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { CuentaComponent } from './cuenta/cuenta.component';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe, CartComponent],
+  declarations: [AppComponent, RegistroComponent, LoginComponent,  MainComponent, TiendaComponent, NoticiasComponent, DescripcionComponent, FaqsComponent, AyudaComponent, NumberToArrayPipe, CartComponent, WishlistComponent, CuentaComponent, BibliotecaComponent],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase
