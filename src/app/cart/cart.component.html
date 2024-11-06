@@ -12,7 +12,7 @@
             <h2 class="text-2xl text-white">Tu carrito</h2>
 
             <div class="grid lg:grid-cols-3 gap-4 relative mt-8 text-white" *ngIf="cartItems.length > 0;">
-                <div class="lg:col-span-2 space-y-4 text-white">
+                <div class="lg:col-span-2 space-y-4 text-white" *ngIf="authService.currentUser">
                     <div class="p-6 bg-gray-800 shadow-[0_0px_4px_0px_rgba(6,81,237,0.2)] rounded-md relative text-white" *ngFor="let item of cartItems">
                         <div class="flex items-center max-sm:flex-col gap-4 max-sm:gap-6 text-white">
                             <div class="w-52 shrink-0">
@@ -58,20 +58,24 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-gray-800 h-max rounded-md p-6 shadow-[0_0px_4px_0px_rgba(6,81,237,0.2)] sticky top-0 " *ngFor="let item of cartItems">
-                    <h3 class="text-xl  text-white">Total de la compra</h3>
-
-                    <ul class="text-white text-sm divide-y mt-4">
-                        <li class="flex flex-wrap gap-4 py-3">Subtotal <span class="ml-auto ">${{item.price}}.00</span></li>
-                        <li class="flex flex-wrap gap-4 py-3">Envio <span class="ml-auto ">$0.00</span></li>
-                        <li class="flex flex-wrap gap-4 py-3">IVA <span class="ml-auto ">$0.00</span></li>
-                        <li class="flex flex-wrap gap-4 py-3 ">Total <span class="ml-auto">{{ getTotal() | currency }}</span></li>
-                    </ul>
-                    <div id="paypal-button-container">
-                        <button type="button" class="mt-4 text-sm px-6 py-3 w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md">Realizar compra</button>
+                <div *ngIf="authService.currentUser">
+                    <div class="bg-gray-800 h-max rounded-md p-6 shadow-[0_0px_4px_0px_rgba(6,81,237,0.2)] sticky top-0 " *ngFor="let item of cartItems">
+                        <h3 class="text-xl  text-white">Total de la compra</h3>
+    
+                        <ul class="text-white text-sm divide-y mt-4">
+                            <li class="flex flex-wrap gap-4 py-3">Subtotal <span class="ml-auto ">${{item.price}}.00</span></li>
+                            <li class="flex flex-wrap gap-4 py-3">Envio <span class="ml-auto ">$0.00</span></li>
+                            <li class="flex flex-wrap gap-4 py-3">IVA <span class="ml-auto ">$0.00</span></li>
+                            <li class="flex flex-wrap gap-4 py-3 ">Total <span class="ml-auto">{{ getTotal() | currency }}</span></li>
+                        </ul>
+                        <div id="paypal-button-container">
+                            <button type="button" class="mt-4 text-sm px-6 py-3 w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md">Realizar compra</button>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="mt-6 bg-yellow-100 p-4 rounded-lg" *ngIf="!authService.currentUser">
+                <h5>Debes iniciar sesión para mostrar el carrito</h5>
             </div>
         </div>
     </div>
