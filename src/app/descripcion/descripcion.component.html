@@ -107,13 +107,17 @@
       
             <!-- Botones de acción --> 
       
-            <div class="flex space-x-4 mb-6"> 
+            <div class="flex space-x-4 mb-6" *ngIf="authService.currentUser"> 
       
               <button class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">Comprar ahora</button> 
       
               <button class="bg-transparent border border-blue-600 text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-blue-600 hover:text-white transition duration-300" (click)="addToCart()">Añadir al carrito</button> 
       
             </div> 
+
+            <div class="text-3xl font-bold mb-4" *ngIf="!authService.currentUser">
+                <h5>Debes iniciar sesión para comprar productos</h5>
+            </div>
       
       
       
@@ -203,7 +207,7 @@
 
             <!-- Login Prompt for Non-Authenticated Users -->
             <div *ngIf="!authService.currentUser" class="mt-6 bg-yellow-100 p-4 rounded-lg">
-              <p class="text-gray-800">You must be logged in to leave a review.</p>
+              <p class="text-gray-800">Debes iniciar sesión para redactar una reseña.</p>
             </div>
 
           </div>
