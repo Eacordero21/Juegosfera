@@ -9,6 +9,9 @@ import { FaqsComponent } from './faqs/faqs.component';  // Importa el componente
 import { AyudaComponent } from './ayuda/ayuda.component';  // Importa el componente
 import { DescripcionComponent } from './descripcion/descripcion.component';  // Importa el componente
 import { CartComponent } from './cart/cart.component';
+import { CuentaComponent } from './cuenta/cuenta.component';
+import { BibliotecaComponent } from './biblioteca/biblioteca.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -21,6 +24,9 @@ const routes: Routes = [
   { path: 'faqs', component: FaqsComponent }, // Configura la ruta
   { path: 'ayuda', component: AyudaComponent }, // Configura la ruta
   { path: 'cart', component: CartComponent },
+  { path: 'cuenta', component: CuentaComponent },
+  { path: 'biblioteca', component: BibliotecaComponent },
+  { path: 'wishlist', component: WishlistComponent },
   { path: 'descripcion/:id', component: DescripcionComponent, },  // Nueva ruta para la descripción
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

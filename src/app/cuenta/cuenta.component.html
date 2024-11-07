@@ -1,1 +1,136 @@
-<p>cuenta works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="body">
+    <div class="flex  text-gray-200 min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-1/4 p-6 border-r border-gray-700">
+          <ul class="space-y-4 text-lg">
+            <li (click)="setActiveSection('account')" 
+                class="flex items-center cursor-pointer text-white-400 font-semibold">
+              <span class="mr-2 text-2xl">👤</span> Configuración de la cuenta
+            </li>
+            <li (click)="setActiveSection('transactions')" class="cursor-pointer">Historial de transacciones</li>
+            <li (click)="setActiveSection('privacy')" class="cursor-pointer">Privacidad y seguridad</li>
+          </ul>
+        </aside>
+      
+        <!-- Main content -->
+        <main class="flex-1 p-6">
+          <!-- Configuración de la cuenta -->
+          <section *ngIf="activeSection === 'account'" class="space-y-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl">ID: 5871238912351235</h2>
+                
+              </div>
+          
+              <form class="mt-6 space-y-4">
+                <div>
+                  <label for="email" class="block text-sm">Correo electrónico</label>
+                  <input type="email" id="email" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                </div>
+                <div>
+                  <label for="username" class="block text-sm">Nombre de usuario</label>
+                  <input type="text" id="username" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                </div>
+                <div>
+                  <label for="password" class="block text-sm">Contraseña</label>
+                  <input type="password" id="password" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                </div>
+                <div class="flex space-x-4">
+                  <div class="flex-1">
+                    <label for="country" class="block text-sm">País</label>
+                    <input type="text" id="country" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                  </div>
+                  <div class="flex-1">
+                    <label for="city" class="block text-sm">Ciudad</label>
+                    <input type="text" id="city" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                  </div>
+                </div>
+                <div>
+                  <label for="address" class="block text-sm">Dirección</label>
+                  <input type="text" id="address" class="w-full p-2 bg-gray-700 text-gray-200 rounded focus:outline-none">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 p-2 rounded text-white font-semibold hover:bg-teal-700">
+                  Guardar cambios
+                </button>
+              </form>
+          </section>
+      
+          <!-- Historial de transacciones -->
+            <section *ngIf="activeSection === 'transactions'" class="space-y-4">
+                <h2 class="text-xl font-semibold">Historial de transacciones</h2>
+                <p>Consulta tu historial de transacciones aquí.</p>
+                
+                <div class="bg-gray-700 p-4 rounded-lg">
+                <table class="w-full text-left">
+                    <thead>
+                    <tr>
+                        <th class="py-2 px-4 text-gray-400">Fecha</th>
+                        <th class="py-2 px-4 text-gray-400">Descripción</th>
+                        <th class="py-2 px-4 text-gray-400">Monto</th>
+                        <th class="py-2 px-4 text-gray-400">Estado</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-t border-gray-600">
+                        <td class="py-2 px-4">2024-10-01</td>
+                        <td class="py-2 px-4">Compra de videojuego</td>
+                        <td class="py-2 px-4">$19.99</td>
+                        <td class="py-2 px-4 text-green-400">Completada</td>
+                    </tr>
+                    
+                    <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                </table>
+                </div>
+            </section>
+      
+          <!-- Privacidad y seguridad -->
+            <section *ngIf="activeSection === 'privacy'" class="space-y-4">
+                <h2 class="text-xl font-semibold">Privacidad y seguridad</h2>
+                <p>Configura tus opciones de privacidad y seguridad aquí.</p>
+            
+                <div class="space-y-4 bg-gray-700 p-4 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <span>Activar autenticación de dos factores</span>
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600">
+                </div>
+                <div class="flex items-center justify-between">
+                    <span>Permitir notificaciones de inicio de sesión</span>
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-teal-600">
+                </div>
+                <div>
+                    <label for="securityQuestion" class="block text-sm">Pregunta de seguridad</label>
+                    <select id="securityQuestion" class="w-full p-2 bg-gray-800 text-gray-200 rounded">
+                    <option>¿Cuál es el nombre de tu primera mascota?</option>
+                    <option>¿En qué ciudad naciste?</option>
+                    <option>¿Cuál es el nombre de tu mejor amigo de la infancia?</option>
+                    </select>
+                    <input type="text" class="w-full mt-2 p-2 bg-gray-800 text-gray-200 rounded" placeholder="Respuesta">
+                </div>
+                </div>
+            </section>
+      
+          
+
+        </main>
+    </div>
+      
+      
+    
+</body>
+
+<footer class="bg-gray-800 text-white py-6 mt-8">
+    <div class="container mx-auto">
+        <p class="text-gray-400">Contacto: infojuegosfera.com</p>
+        <p class="text-gray-400">&copy; 2024 Juegosfera. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</html>

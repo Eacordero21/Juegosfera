@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./cuenta.component.css']
 })
 export class CuentaComponent {
+  activeSection: string = 'account';
+
+  setActiveSection(section: string) {
+    this.activeSection = section;
+  }
 
 }
